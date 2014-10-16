@@ -42,6 +42,7 @@
 
     var at_config = {
       at: "@",
+      limit: 20,
       data: names,
       tpl: "<li data-value='@${name}'>${name} <small>${email}</small></li>",
       show_the_at: true
@@ -56,6 +57,11 @@
     $inputor = $('#inputor').atwho(at_config).atwho(emoji_config);
     $inputor.caret('pos', 47);
     $inputor.focus().atwho('run');
+    $inputor.on('upOrDown.atwho', function(e, el, list) {
+      list.animate({
+        scrollTop: el.position().top + list.scrollTop()
+      }, 200)
+    });
     $('#editable').atwho(at_config).atwho(emoji_config);
 
     ifr = $('#iframe1')[0]

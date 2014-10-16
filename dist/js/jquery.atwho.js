@@ -599,7 +599,8 @@ View = (function() {
     if (!next.length) {
       next = this.$el.find('li:first');
     }
-    return next.addClass('cur');
+    next.addClass('cur');
+    return this.context.trigger('upOrDown', [next, this.$el]);
   };
 
   View.prototype.prev = function() {
@@ -609,7 +610,8 @@ View = (function() {
     if (!prev.length) {
       prev = this.$el.find('li:last');
     }
-    return prev.addClass('cur');
+    prev.addClass('cur');
+    return this.context.trigger('upOrDown', [prev, this.$el]);
   };
 
   View.prototype.show = function() {

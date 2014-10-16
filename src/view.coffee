@@ -56,12 +56,14 @@ class View
     next = cur.next()
     next = @$el.find('li:first') if not next.length
     next.addClass 'cur'
+    @context.trigger 'upOrDown', [next, @$el]
 
   prev: ->
     cur = @$el.find('.cur').removeClass('cur')
     prev = cur.prev()
     prev = @$el.find('li:last') if not prev.length
     prev.addClass 'cur'
+    @context.trigger 'upOrDown', [prev, @$el]
 
   show: ->
     if @stop_showing
